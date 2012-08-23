@@ -11,7 +11,7 @@
         .scrollable#scrollable
           .items
             %div
-              %img{src: "http://farm1.static.flickr.com/143/321464099_a7cfcb95cf_t.jpg"}
+              = image_tag(@product.image.file.details.url) rescue nil
               %img{src: "http://farm4.static.flickr.com/3089/2796719087_c3ee89a730_t.jpg"}
               %img{src: "http://farm1.static.flickr.com/79/244441862_08ec9b6b49_t.jpg"}
               %img{src: "http://farm1.static.flickr.com/28/66523124_b468cf4978_t.jpg"}

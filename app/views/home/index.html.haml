@@ -1,2 +1,20 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+.page-header
+  %h1 Home
+.show-grid.products.clearfix
+  - @products.each do |product|
+    .span3.clearfix.product
+      .clearfix
+        .span3
+          .image= image_tag(product.image.file.thumb.url) rescue nil
+        .span9
+          .name
+            %h3=  link_to product.name, product_path(product)
+          .price
+            %strong Price:
+            = number_to_currency(product.price)
+          .available-on
+            %strong Available On:
+            = product.created_at.strftime('%m/%d/%Y')
+      .description
+        = truncate(strip_tags(product.description), length: 200)
+        = link_to "» more", product_path(product), title: "View #{product.name}", class: 'more-link'

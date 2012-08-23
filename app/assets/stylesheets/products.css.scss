@@ -5,7 +5,10 @@
 .products{
 	.product{
 		.name {
-			h3 a{color:#221818;}
+			h3 a{
+				color:#221818;
+				text-decoration: none;
+			}
 		}
 		height:200px;
 		margin-left: 10px;
