@@ -1,6 +1,5 @@
 ActiveAdmin.register Product do
-  config.clear_action_items!
-
+  # config.clear_action_items!
 
   index do
     column :id

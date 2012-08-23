@@ -6,6 +6,9 @@ gem 'rails', '3.2.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'activeadmin'
 gem 'carrierwave'
+gem 'haml'
+gem 'haml-rails'
+gem 'html5-rails'
 gem 'meta_search'
 gem 'mini_magick'
 gem 'sqlite3'
@@ -16,6 +19,7 @@ gem 'tinymce-rails'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+	gem 'twitter-bootstrap-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platform => :ruby

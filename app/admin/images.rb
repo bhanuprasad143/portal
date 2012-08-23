@@ -1,5 +1,5 @@
 ActiveAdmin.register Image do
-  config.clear_action_items!
+  # config.clear_action_items!
 
   form do |f|
   	f.inputs do

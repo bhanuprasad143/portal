@@ -1,8 +1,18 @@
 ActiveAdmin.register Category do
-  config.clear_action_items!
+  # config.clear_action_items!
+
+  form do |f|
+  	f.inputs do
+    	f.input :parent, as: :select, collection: Category.root.where(["categories.id <> ?", f.object.id.to_i])
+    	f.input :name
+    	f.input :description
+  	end
+    f.buttons
+  end
 
   index do
     column :id
+    column :parent
     column :name
     column :description do |cat|
     	truncate(strip_tags(cat.description), length: 200)
@@ -17,6 +27,7 @@ ActiveAdmin.register Category do
 	show do |cat|
 	  attributes_table do
 	    row :id
+	    row :parent
 	    row :name
 	    row :description do
 	    	raw cat.description
@@ -29,4 +40,5 @@ ActiveAdmin.register Category do
 	  end
 	  active_admin_comments
 	end  
+
 end
