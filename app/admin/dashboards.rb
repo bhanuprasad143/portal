@@ -1,4 +1,19 @@
 ActiveAdmin::Dashboards.build do
+  section "Recent Categories" do
+    ul do
+      Category.order("updated_at DESC").limit(5).collect do |cat|
+        li link_to(cat.name, admin_product_path(cat))
+      end
+    end
+  end
+
+  section "Recent Products" do
+    ul do
+      Product.order("updated_at DESC").limit(5).collect do |product|
+        li link_to(product.name, admin_product_path(product))
+      end
+    end
+  end
 
   # Define your dashboard sections here. Each block will be
   # rendered on the dashboard in the context of the view. So just

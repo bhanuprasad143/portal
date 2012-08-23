@@ -93,7 +93,7 @@ ActiveAdmin.setup do |config|
   # Admin comments are enabled by default.
   #
   # Default:
-  # config.allow_comments = true
+  config.allow_comments = true
   #
   # You can turn them on and off for any given namespace by using a
   # namespace config block.
@@ -126,4 +126,10 @@ ActiveAdmin.setup do |config|
   #
   # To load a javascript file:
   #   config.register_javascript 'my_javascript.js'
+
+  module ActiveAdmin
+    class Comment < ActiveRecord::Base
+      attr_accessible :body, :namespace, :resource_id, :resource_type
+    end
+  end  
 end
