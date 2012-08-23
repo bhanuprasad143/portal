@@ -5,9 +5,11 @@ gem 'rails', '3.2.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'activeadmin'
-gem "meta_search"
+gem 'carrierwave'
+gem 'meta_search'
+gem 'mini_magick'
 gem 'sqlite3'
-
+gem 'tinymce-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
