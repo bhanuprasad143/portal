@@ -10,3 +10,8 @@ AdminUser.create!({
 	email:    'admin@admin.com',
 	password: 'password'
 })
+
+Dir[Rails.root.join('db', 'devseeds', '*.rb').to_s].each do |file|
+  puts "Loading db/devseeds/#{file.split(File::SEPARATOR).last}"
+  load(file)
+end

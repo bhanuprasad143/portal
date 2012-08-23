@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-  attr_accessible :description, :name, :parent_id
+  attr_accessible :description, :name, :parent_id, :parent
 
   belongs_to :parent, :class_name => 'Category'
 

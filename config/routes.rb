@@ -1,5 +1,7 @@
 Portal::Application.routes.draw do
 
+  resources :products, :only => [:index, :show]
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config

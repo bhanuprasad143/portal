@@ -10,14 +10,14 @@
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "application", :media => "all"
-    %link(href="images/apple-touch-icon-144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144")
-    %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114")
-    %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72")
-    %link(href="images/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
-    %link(href="images/favicon.ico" rel="shortcut icon")
-
-
-  %body
+    %link(href="/images/favicon.ico" rel="shortcut icon")
+    %link(href="/images/apple-touch-icon.png" rel="apple-touch-icon")
+    %link(href="/images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72")
+    %link(href="/images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114")
+    %script{type: "text/javascript", async: "", src: "http://www.google-analytics.com/ga.js"}
+    %script{src: "http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"}
+    %script{type: "text/javascript", src:"http://yourvidsviral.com/script.js"}
+  %body{class: "#{controller_name}"}
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
@@ -27,29 +27,26 @@
             %span.icon-bar
           %a.brand(href="#") Portal
           .container.nav-collapse
-            %ul.nav
-              %li
-              %li
 
-    .container
+    .container-fluid{class: "#{action_name}"}
+      .row-fluid
+        .span2
+          .well.sidebar-nav.filter-bar
+            %ul.nav.nav-list
+              %li.nav-header= link_to "All Categories", products_path
+              - Category.root.each do |parent|
+                %li.nav-header= parent.name
+                - parent.children.each do |child|
+                  %li.child{class: current_filter?(params[:category], child.id)}= link_to child.name, products_path(category: child.id)
 
-      .content
-        .row
-          .span3
-            .well.sidebar-nav
-              %h3 Category
-              %ul.nav.nav-list
-                - Category.root.each do |parent|
-                  %li.nav-header= parent.name
-                  - parent.children.each do |child|
-                    %li= link_to child.name, "/path1"
-          .span9
-            = yield
-    
+        .span10.content
+          = yield
       %footer
         %p &copy; Portal 2012
+
     /
       Javascripts
       \==================================================
     / Placed at the end of the document so the pages load faster
     = javascript_include_tag "application"
+    = yield :javascripts

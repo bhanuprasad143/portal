@@ -1,0 +1,36 @@
+.page-header
+  %h1
+    Product:
+    = @product.name
+.product-details
+  .images
+    .current_image= image_tag(@product.image.file.details.url) rescue nil
+    .row.stream
+      %div{style: "margin:0 auto; width: 760px; height:140px;"}
+        %a.prev.browse.left
+        .scrollable#scrollable
+          .items
+            %div
+              %img{src: "http://farm1.static.flickr.com/143/321464099_a7cfcb95cf_t.jpg"}
+              %img{src: "http://farm4.static.flickr.com/3089/2796719087_c3ee89a730_t.jpg"}
+              %img{src: "http://farm1.static.flickr.com/79/244441862_08ec9b6b49_t.jpg"}
+              %img{src: "http://farm1.static.flickr.com/28/66523124_b468cf4978_t.jpg"}
+              %img{src: "http://farm4.static.flickr.com/3089/2796719087_c3ee89a730_t.jpg"}
+       
+            %div
+              %img{src: "http://farm1.static.flickr.com/163/399223609_db47d35b7c_t.jpg"}
+              %img{src: "http://farm1.static.flickr.com/135/321464104_c010dbf34c_t.jpg"}
+              %img{src: "http://farm1.static.flickr.com/40/117346184_9760f3aabc_t.jpg" }
+              %img{src: "http://farm1.static.flickr.com/153/399232237_6928a527c1_t.jpg"}
+              %img{src: "http://farm4.static.flickr.com/3089/2796719087_c3ee89a730_t.jpg"}
+       
+        %a.next.browse.right Next
+  .information
+    .price
+      %strong Price
+      = number_to_currency(@product.price)
+    .description= raw @product.description
+
+- content_for :javascripts do
+  :javascript
+    $(function() {$(".scrollable").scrollable();});

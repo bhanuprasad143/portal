@@ -1,5 +1,5 @@
 class Image < ActiveRecord::Base
-  attr_accessible :imageable_id, :imageable_type, :file
+  attr_accessible :imageable_id, :imageable_type, :file, :imageable
 
   belongs_to :imageable, :polymorphic => true
 

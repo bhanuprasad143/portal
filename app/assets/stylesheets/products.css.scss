@@ -1,0 +1,22 @@
+// Place all the styles related to the Products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.products{
+	.product{
+		.name {
+			h3 a{color:#221818;}
+		}
+		height:200px;
+		margin-left: 10px;
+		float: left;
+		.more-link{
+			text-decoration: none;
+		}
+	}
+}
+.product-details{
+	.images{
+		text-align: center;
+	}
+}
